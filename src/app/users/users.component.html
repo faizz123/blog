@@ -1,0 +1,44 @@
+<section class="usersection">
+    <div class="cards">
+        <h2 class=" text-center text-dark">Blog</h2>
+        <div class="table-responsive justify-content-center"><br>
+            <h4 class=" text-center text-dark">Users</h4>
+            <table class="table  table-striped">
+
+                <thead>
+                    <tr>
+                        <th class="text-center" style="padding-bottom:4%;">Sl No</th>
+                        <th class="text-center">Name <br>
+                            <input type="text" class="form-control text-center" [(ngModel)]="name"
+                                placeholder="Serach Name" (ngModelChange)="searchName()">
+                        </th>
+
+                        <th class="text-center">Company <br>
+                            <input type="text" class="form-control text-center" [(ngModel)]="companyName"
+                                placeholder="Serach Company" (ngModelChange)="searchCompanyName()">
+                        </th>
+                        <th class="text-center" style="padding-bottom:4%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="toDoListArray?.length === 0">
+                        <td class="text-center" colspan="4">No Records Available</td>
+                    </tr>
+                    <tr *ngFor="let item of toDoListArray;let i=index">
+                        <td class="text-center">{{i+1}}</td>
+                        <td class="text-center">
+                            {{item.name}}
+                        </td>
+                        <td class="text-center">
+                            {{item.company.name}}
+                        </td>
+                        <td class="text-center" style="cursor: pointer;">
+                            <a class="text-dark nav-link font-weight-bold" (click)="goToPostPage(item.id)"
+                                title="Go to Posts">Posts</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

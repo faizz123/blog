@@ -1,0 +1,34 @@
+<section class="usersection">
+  <div class="card">
+    <div class="table-responsive justify-content-center"><br>
+      <h4 class=" text-center text-dark">Posts</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center">Post
+              <input type="text" class="form-control text-center" [(ngModel)]="postName"
+                placeholder="Search By Post Title " (ngModelChange)="searchName()">
+            </th>
+            <th class="text-center" style="padding-bottom:4%;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="toDoListArray?.length === 0">
+            <td class="text-center" colspan="2">No Records Available</td>
+          </tr>
+          <tr *ngFor="let item of toDoListArray | paginate: { itemsPerPage:5, currentPage: p } ;let i=index">
+
+            <td class="text-center">
+              {{item.title}}
+            </td>
+            <td class="text-center" style="cursor: pointer;">
+              <a class="text-dark nav-link font-weight-bold" (click)="goToPostDetailPage(item.id)"
+                title="Go to Post Details">Posts Detail</a>
+            </td>
+          </tr>
+        </tbody>
+        <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+      </table>
+    </div>
+  </div>
+</section>
